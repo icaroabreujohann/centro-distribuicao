@@ -1,7 +1,11 @@
-package exeptions;
+package exceptions;
 
 public class DocumentoInvalido extends RuntimeException {
-    public DocumentoInvalido(String message) {
-        super(message);
+
+    private final String documento;
+
+    public DocumentoInvalido(String documento) {
+        super("Documento inválido: " + documento);
+        this.documento = documento;
     }
 }

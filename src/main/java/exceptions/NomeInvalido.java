@@ -1,7 +1,11 @@
 package exceptions;
 
 public class NomeInvalido extends RuntimeException {
-  public NomeInvalido(String message) {
-    super(message);
-  }
+
+    private final String nome;
+
+    public NomeInvalido(String nome) {
+        super("Nome inválido " + nome);
+        this.nome = nome;
+    }
 }

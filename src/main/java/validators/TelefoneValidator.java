@@ -1,4 +1,9 @@
 package validators;
 
-public class TelefoneValidator {
+public final class TelefoneValidator {
+    private TelefoneValidator() { }
+
+        public static boolean isValido(String telefone) {
+            return  telefone != null && !telefone.isBlank();
+        }
 }
