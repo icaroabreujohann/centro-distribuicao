@@ -1,6 +1,6 @@
 package entities.pessoa;
 import enums.Regiao;
-import exceptions.CepInvalido;
+import exceptions.CepInvalidoException;
 import validators.CepValidator;
 
 import java.util.Objects;
@@ -19,7 +19,7 @@ public final class Endereco {
     }
 
     public void setCep(String cep) {
-        if(!CepValidator.isValido(cep)) throw new CepInvalido(cep);
+        if(!CepValidator.isValido(cep)) throw new CepInvalidoException(cep);
         this.cep = cep;
     }
 

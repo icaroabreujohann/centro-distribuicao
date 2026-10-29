@@ -1,10 +1,10 @@
 package exceptions;
 
-public class CepInvalido extends RuntimeException {
+public class CepInvalidoException extends RuntimeException {
 
     private final String cep;
 
-    public CepInvalido(String cep) {
+    public CepInvalidoException(String cep) {
         super("CEP invalido: " + cep);
         this.cep = cep;
     }

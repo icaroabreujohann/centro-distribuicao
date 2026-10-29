@@ -1,9 +1,9 @@
 package exceptions;
 
-public class TelefoneInvalido extends RuntimeException {
+public class TelefoneInvalidoException extends RuntimeException {
     private final String telefone;
 
-    public TelefoneInvalido(String telefone) {
+    public TelefoneInvalidoException(String telefone) {
         super("Telefone inválido " + telefone);
         this.telefone = telefone;
     }

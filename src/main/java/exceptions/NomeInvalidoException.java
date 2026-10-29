@@ -1,10 +1,10 @@
 package exceptions;
 
-public class NomeInvalido extends RuntimeException {
+public class NomeInvalidoException extends RuntimeException {
 
     private final String nome;
 
-    public NomeInvalido(String nome) {
+    public NomeInvalidoException(String nome) {
         super("Nome inválido " + nome);
         this.nome = nome;
     }

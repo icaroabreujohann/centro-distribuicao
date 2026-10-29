@@ -1,14 +1,14 @@
 package entities.pessoa;
 
-import exceptions.EmailInvalido;
-import exceptions.EnderecoInvalido;
-import exceptions.NomeInvalido;
-import exceptions.TelefoneInvalido;
+import exceptions.EmailInvalidoException;
+import exceptions.EnderecoInvalidoException;
+import exceptions.NomeInvalidoException;
+import exceptions.TelefoneInvalidoException;
 import validators.EmailValidator;
 import validators.NomeValidator;
 import validators.TelefoneValidator;
 
-public abstract class Pessoa {
+public abstract sealed class Pessoa permits PessoaFisica, PessoaJuridica {
     private String nome;
     private String email;
     private String telefone;
@@ -26,7 +26,7 @@ public abstract class Pessoa {
     }
 
     public final void setNome(String nome) {
-        if (!NomeValidator.isValido(nome)) throw new NomeInvalido(nome);
+        if (!NomeValidator.isValido(nome)) throw new NomeInvalidoException(nome);
         this.nome = nome;
     }
 
@@ -35,7 +35,7 @@ public abstract class Pessoa {
     }
 
     public final void setEmail(String email) {
-        if(!EmailValidator.isValido(email)) throw new EmailInvalido(email);
+        if(!EmailValidator.isValido(email)) throw new EmailInvalidoException(email);
         this.email = email;
     }
 
@@ -44,7 +44,7 @@ public abstract class Pessoa {
     }
 
     public final void setTelefone(String telefone) {
-        if(!TelefoneValidator.isValido(telefone)) throw new TelefoneInvalido(telefone);
+        if(!TelefoneValidator.isValido(telefone)) throw new TelefoneInvalidoException(telefone);
         this.telefone = telefone;
     }
 
@@ -53,7 +53,9 @@ public abstract class Pessoa {
     }
 
     public void setEndereco(Endereco endereco) {
-        if (endereco == null) throw new EnderecoInvalido();
+        if (endereco == null) throw new EnderecoInvalidoException();
         this.endereco = endereco;
     }
+
+    public abstract String getDocumento();
 }
